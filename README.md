@@ -3,8 +3,7 @@ Data Twist
 
 Experimental script to twist Open Data into new shapes
 
-Copyright (c) 2013 Shane Coughlan
-Developed by Kana Fukuma under contract
+Copyright (c) 2013 Shane Coughlan and Kana Fukuma
 
 Data Twist is free software release by Shane Coughlan <shane@opendawn.com>.
 You can redistribute it and/or modify it under either the terms of the
