@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 3.4.11.1
+- http://www.phpmyadmin.net
+-
+- Host: localhost
+- Generation Time: Feb 17, 2013 at 07:32 AM
+- Server version: 5.1.66
+- PHP Version: 5.2.17
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="http://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="phjrsz_wp4" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="wp_posts">
+                CREATE TABLE `wp_posts` (
+                  `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+                  `post_author` bigint(20) unsigned NOT NULL DEFAULT '0',
+                  `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+                  `post_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+                  `post_content` longtext NOT NULL,
+                  `post_title` text NOT NULL,
+                  `post_excerpt` text NOT NULL,
+                  `post_status` varchar(20) NOT NULL DEFAULT 'publish',
+                  `comment_status` varchar(20) NOT NULL DEFAULT 'open',
+                  `ping_status` varchar(20) NOT NULL DEFAULT 'open',
+                  `post_password` varchar(20) NOT NULL DEFAULT '',
+                  `post_name` varchar(200) NOT NULL DEFAULT '',
+                  `to_ping` text NOT NULL,
+                  `pinged` text NOT NULL,
+                  `post_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+                  `post_modified_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+                  `post_content_filtered` longtext NOT NULL,
+                  `post_parent` bigint(20) unsigned NOT NULL DEFAULT '0',
+                  `guid` varchar(255) NOT NULL DEFAULT '',
+                  `menu_order` int(11) NOT NULL DEFAULT '0',
+                  `post_type` varchar(20) NOT NULL DEFAULT 'post',
+                  `post_mime_type` varchar(100) NOT NULL DEFAULT '',
+                  `comment_count` bigint(20) NOT NULL DEFAULT '0',
+                  PRIMARY KEY (`ID`),
+                  KEY `post_name` (`post_name`),
+                  KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
+                  KEY `post_parent` (`post_parent`),
+                  KEY `post_author` (`post_author`)
+                ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'phjrsz_wp4'
+    -->        
+        <table name="wp_posts">
+            <column name="ID">8</column>
+            <column name="post_author">1</column>
+            <column name="post_date">2013-02-17 01:28:16</column>
+            <column name="post_date_gmt">2013-02-17 01:28:16</column>
+            <column name="post_content">Pedestrian Crossing</column>
+            <column name="post_title">Pedestrian Crossing</column>
+            <column name="post_excerpt"></column>
+            <column name="post_status">publish</column>
+            <column name="comment_status">open</column>
+            <column name="ping_status">open</column>
+            <column name="post_password"></column>
+            <column name="post_name">pedestrian-crossing-8</column>
+            <column name="to_ping"></column>
+            <column name="pinged"></column>
+            <column name="post_modified">2013-02-17 01:28:16</column>
+            <column name="post_modified_gmt">2013-02-17 01:28:16</column>
+            <column name="post_content_filtered"></column>
+            <column name="post_parent">0</column>
+            <column name="guid">http://www.opendawn.com/test/geo1/2013/02/17/pedestrian-crossing-8/</column>
+            <column name="menu_order">0</column>
+            <column name="post_type">post</column>
+            <column name="post_mime_type"></column>
+            <column name="comment_count">0</column>
+        </table>
+        <table name="wp_posts">
+            <column name="ID">9</column>
+            <column name="post_author">1</column>
+            <column name="post_date">2013-02-17 01:28:16</column>
+            <column name="post_date_gmt">2013-02-17 01:28:16</column>
+            <column name="post_content">Parking:山上駐車場</column>
+            <column name="post_title">山上駐車場</column>
+            <column name="post_excerpt"></column>
+            <column name="post_status">publish</column>
+            <column name="comment_status">open</column>
+            <column name="ping_status">open</column>
+            <column name="post_password"></column>
+            <column name="post_name">%E5%B1%B1%E4%B8%8A%E9%A7%90%E8%BB%8A%E5%A0%B4-9</column>
+            <column name="to_ping"></column>
+            <column name="pinged"></column>
+            <column name="post_modified">2013-02-17 01:28:16</column>
+            <column name="post_modified_gmt">2013-02-17 01:28:16</column>
+            <column name="post_content_filtered"></column>
+            <column name="post_parent">0</column>
+            <column name="guid">http://www.opendawn.com/test/geo1/2013/02/17/%E5%B1%B1%E4%B8%8A%E9%A7%90%E8%BB%8A%E5%A0%B4-9/</column>
+            <column name="menu_order">0</column>
+            <column name="post_type">post</column>
+            <column name="post_mime_type"></column>
+            <column name="comment_count">0</column>
+        </table>
+            </database>
+</pma_xml_export>
