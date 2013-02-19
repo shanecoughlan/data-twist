@@ -27,9 +27,16 @@ Usage
 -----
 
 To use the current root solution as of 19th February 2013, execute a command
-with SCRIPT.rb <inputfile.name> <outputfile.name>
+with "ruby output_sql3.rb"
 
-Then load the <outputfile.name> into your Wordpress MySQL database. Don't
+This will read "osm-website-central-matsue-min.osm.xml" and use "sql_format.sql"
+as a templete to write the output file. At the moment that is called
+"o_sql07.sql"
+
+There are those who say we don't think up sexy names for our files. They are
+wrong.
+
+Anyway, load "o_sql07.sql" into your Wordpress MySQL database. Don't
 forget to install Wordpress and it's Geo Mashup plug-in first.
 
 Warning
