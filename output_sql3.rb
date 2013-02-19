@@ -136,7 +136,7 @@ end
 def output(last_str,outputfile,array)
 	post_author = 1
 	count = 0
-	content = "<br/><br/>[geo_mashup_map zoom=16]<br/><br/>Data from OpenStreetMap. &copy; OpenStreetMap contributors. OpenStreetMap is <i>open data</i>, licensed under the <a href=\"http://opendatacommons.org/licenses/odbl/\">Open Data Commons Open Database License</a> (ODbL)<br/><br/>Last updated:"
+	content = "<br/>[geo_mashup_map zoom=16]<br/><small>Geo-data from OpenStreetMap. &copy; OpenStreetMap contributors. OpenStreetMap is <i>open data</i>, licensed under the <a href=\"http://opendatacommons.org/licenses/odbl/\">Open Data Commons Open Database License</a> (ODbL)</small><br/>This entry was last updated: "
 	File.open(outputfile,"a") { |f|
 		
 		# write about the "wp_posts" file
