@@ -5,7 +5,8 @@ An experimental script family to twist Open Data into new shapes.
 
 Copyright (c) 2013 Shane Coughlan and Kana Fukuma
 
-== Overview ==
+Overview
+--------
 
 These scripts are designed to take OpenStreetMap XML data and import it
 into a geo-aware version of Wordpress. This allows information like shops
@@ -22,7 +23,8 @@ Data Twist is not a solution for making local directories by itself. It is the
 foundation for doing so via Open Data in the form of a OpenStreetMap's
 database.
 
-== Usage ==
+Usage
+-----
 
 To use the current root solution as of 19th February 2013, execute a command
 with SCRIPT.rb <inputfile.name> <outputfile.name>
@@ -30,7 +32,8 @@ with SCRIPT.rb <inputfile.name> <outputfile.name>
 Then load the <outputfile.name> into your Wordpress MySQL database. Don't
 forget to install Wordpress and it's Geo Mashup plug-in first.
 
-== Warning ==
+Warning
+-------
 
 Current code is from a hack session and under rapid development.
 Don't use with caution. Use with terror.
@@ -38,7 +41,8 @@ Don't use with caution. Use with terror.
 If this sets fire to your house, chases your cat up a tree, or causes you to
 quit computers and become a vegetable farmer, don't blame us.
 
-== License ==
+License
+-------
 
 Data Twist is Free Software. You can call it Open Source too. Whatever floats
 your boat.
