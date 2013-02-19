@@ -5,6 +5,8 @@ Contents:
 == Dependancies ==
 == Known Issues ==
 == Extracting Big Data ==
+== Usage ==
+== Notes ==
 
 And here we go...
 
@@ -16,11 +18,11 @@ These scripts are designed to take OpenStreetMap XML data and import it into a
 geo-aware version of Wordpress. This allows information like shops and tourist
 locations to quickly populate directories, at least in theory.
 
-The initial focus is on allowing XAPI, OSM website XML downloads and Osmosis
-node filters from a database to be converted into SQL files that we can quickly
-load into a Wordpress install. There are some dependencies at the moment, with
-the key item being the Geo Mashup plug-in for Wordpress to allow us to store
-geo-references with each post.
+The initial focus is on allowing OSM website XML downloads, XAPI pulls and
+Osmosis node filters from a database to be converted into SQL files that we can
+quickly load into a Wordpress install. There are some dependencies at the
+moment, with the key item being the Geo Mashup plug-in for Wordpress to allow
+us to store geo-references with each post.
 
 Data Twist is not a solution for making local directories by itself. It is the
 foundation for doing so via Open Data in the form of a OpenStreetMap's
@@ -100,3 +102,75 @@ http://downloads.cloudmade.com
 This data is from the OpenStreetMap database, but be aware that supporting its
 structure will not mean you can support imports from most OpenStreetMap
 resources. To do that please look at the links above.
+
+Our second test data-sets were obtained via the OpenStreetMap XAPI. Here is an
+example dataset of 223 public libraries in London, UK that we used:
+wget --timeout=0  http://open.mapquestapi.com/xapi/api/0.6/node[amenity=library][bbox=-0.57,51.24,0.31,51.75] -O data.osm
+
+This data was useful to help us do basic imports, though when we tried to
+scale up to larger datasets using a similar command we ran into database
+duplication errors around the entries. This issue is worth expanding on, as
+it is something you are likely to find when experimenting too. Learn more here:
+https://github.com/shanecoughlan/data-twist/issues/5
+
+As we proceeded from simple OpenStreetMap XML to more complex sets we decided
+to focus on the website export from OpenStreetMap for our test-case setup, and
+loaded data from Matsue city, Shimane Prefecture, Japan. This data is lined
+up to be our first "demo recipe", and will be complemented by a second
+"demo recipe" using Osmosis data in time.
+
+Essentially the import process filters <nodes> by searching for <tag> with
+" k="amenity" v="type" " data inside. We use the "amenity" as a positive hit
+and the "type" as an information type listed in the resulting Wordpress post.
+We read the <tag> that contains the name and use this as the title. We also
+read the node timestamp and use this both to record a data for the information
+and to show a "last updated" note in the relevant post.
+
+== Usage ==
+
+You will notice several different files and directories in our GitHub
+repository. Essentially we are included the proof-of-concept steps that lead
+us to the currently-used solution, which will always be located in the root.
+
+To use the current root solution as of 19th February 2013, execute a command
+with SCRIPT.rb <inputfile.name> <outputfile.name>
+
+Then load the <outputfile.name> into your Wordpress MySQL database. Don't
+forget to install Wordpress and it's Geo Mashup plug-in first.
+
+
+There are three iterations of our experiments in the current repo.
+
+The first is simpleXML2XML, where a Ruby script takes simple POI from a
+Cloudmade download to transform the data into a format that allows import
+through the Wordpress RSS import feature. This allowed import of items
+that did not have duplicate titles, but ran into issue with the automatic
+duplication filter used by Wordpress for RSS import.
+
+The second is simpleXML2dbXML, an experiment to push the data directly into
+a Wordpress MySQL database and avoid any duplication filters. This had
+import errors with phpMyAdmin. Then we found that an export from the same
+application failed to import too, so we decided it's probably better to
+look for a more flexbile solution.
+
+The third iteration is simpleXML2SQL, which allows us to convert the data
+from OpenStreetMap into a format that can be imported into a Wordpress
+database in several ways. It looks like a winner, and Kana included geo
+awareness for the Geo Mashup plug-in.
+
+The basic usage instructions for the earlier proof-of-concept code is the
+same, but please restrict usage to the test data included in each folder. It's
+unlikely to work elsewhere.
+
+== Notes ==
+
+This project provides a proof-of-concept for twisting OpenStreetMap data
+into new shapes. In our case we are helping people build Open Source
+geo-directories using Open Data (OpenStreetMap) and Open Source (Wordpress) as
+a foundation.
+
+To contact us please use the following addresses. We are always glad to get
+input.
+
+Shane Coughlan <shane@opendawn.com>
+Kana Fukuma <kana@opendawn.com> (Japanese preferred)
