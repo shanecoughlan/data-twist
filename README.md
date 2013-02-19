@@ -1,7 +1,7 @@
 Data Twist
 ==========
 
-Experimental script to twist Open Data into new shapes
+An experimental script family to twist Open Data into new shapes.
 
 Copyright (c) 2013 Shane Coughlan and Kana Fukuma
 
