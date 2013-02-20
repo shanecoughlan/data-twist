@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `phjrsz_wp4`
+-- Database: `phjrsz_wp7`
 --
 
 -- --------------------------------------------------------
@@ -62,11 +62,11 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
 --
 
 CREATE TABLE IF NOT EXISTS `wp_geo_mashup_locations` (
-  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `lat` float(11,7) NOT NULL,
-  `lng` float(11,7) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `lat` double(11,7) NOT NULL,
+  `lng` double(11,7) NOT NULL,
   `address` tinytext,
-  `saved_name` varchar(100) DEFAULT NULL,
+  `saved_name` varchar(200) DEFAULT NULL,
   `geoname` tinytext,
   `postal_code` tinytext,
   `country_code` varchar(2) DEFAULT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `wp_geo_mashup_locations` (
 CREATE TABLE IF NOT EXISTS `wp_geo_mashup_location_relationships` (
   `object_name` varchar(80) NOT NULL,
   `object_id` bigint(20) NOT NULL,
-  `location_id` mediumint(9) NOT NULL,
+  `location_id` bigint(20) NOT NULL,
   `geo_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`object_name`,`object_id`,`location_id`),
   KEY `object_name` (`object_name`,`object_id`),
