@@ -1,0 +1,5 @@
+﻿<wpt lat="34.038667100" lon="133.894898600">
+   <name>Parking:吉野川サービスエリア (Yoshinogawa SA)</name>
+   <cmt>Parking:吉野川サービスエリア (Yoshinogawa SA)</cmt>
+   <desc>Parking:吉野川サービスエリア (Yoshinogawa SA)</desc>
+ </wpt>

@@ -37,7 +37,7 @@ There are those who say we don't think up sexy names for our files. They are
 wrong.
 
 Anyway, load "o_sql07.sql" into your Wordpress MySQL database. Don't
-forget to install Wordpress and it's Geo Mashup plug-in first.
+forget to install Wordpress and the Geo Mashup plug-in first.
 
 Warning
 -------

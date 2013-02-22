@@ -38,7 +38,7 @@ things.
 
 Data Twist has some dependancies.
 
-(1) A working Ruby installation. We used version
+(1) A working Ruby installation. We used version 1.9.2p290.
 (2) An XML version of the OpenStreetMap data. The ".osm" files will work.
 (3) A vanilla Wordpress installation. We used version 3.5.1.
 (4) The Geo Mashup plug-in for Wordpress installed. We used version 1.5.2.
@@ -143,7 +143,7 @@ There are those who say we don't think up sexy names for our files. They are
 wrong.
 
 Anyway, load "o_sql07.sql" into your Wordpress MySQL database. Don't
-forget to install Wordpress and it's Geo Mashup plug-in first.
+forget to install Wordpress and the Geo Mashup plug-in first.
 
 
 There are three iterations of our experiments in the current repo.

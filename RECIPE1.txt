@@ -1,0 +1,50 @@
+Data Twist
+==========
+
+An experimental script family to twist Open Data into new shapes.
+
+Copyright (c) 2013 Kana Fukuma and Shane Coughlan
+
+== Introduction ==
+
+Data Twist is an experimental script family to twist Open Data into new shapes.
+
+These scripts are designed to take OpenStreetMap XML data and import it into a
+geo-aware version of Wordpress. This allows information like shops and tourist
+locations to quickly populate directories, at least in theory.
+
+The initial focus is on allowing OSM website XML downloads, XAPI pulls and
+Osmosis node filters from a database to be converted into SQL files that we can
+quickly load into a Wordpress install. There are some dependencies at the
+moment, with the key item being the Geo Mashup plug-in for Wordpress to allow
+us to store geo-references with each post.
+
+Data Twist is not a solution for making local directories by itself. It is the
+foundation for doing so via Open Data in the form of a OpenStreetMap's
+database.
+
+Data Twist is a Ruby application. It was originally coded in Spring 2013 by
+Kana Fukuma and Shane Coughlan over a four day (24 hour) hack session. Our
+goal was to provide proof-of-concept regarding the "twisting" of Open Data
+into new use cases. The idea is that this can help more people do more cool
+things.
+
+== Usage ==
+
+To use the current root solution as of 19th February 2013, execute a command
+with "ruby output_sql3.rb"
+
+This will read "osm-website-central-matsue-min.osm.xml" and use "sql_format.sql"
+as a templete to write the output file. At the moment that is called
+"o_sql07.sql"
+
+There are those who say we don't think up sexy names for our files. They are
+wrong.
+
+Anyway, load "o_sql07.sql" into your Wordpress MySQL database. Don't
+forget to install Wordpress and the Geo Mashup plug-in first.
+
+== Recipe 1 ==
+
+The first recipe is to filter data from OpenStreetMap that was obtained with
+the website XML download. We then load that data into a vanilla 

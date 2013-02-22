@@ -1,0 +1,19 @@
+﻿<wpt lat="34.122842400" lon="133.645256100">
+  
+<name>Pedestrian Crossing</name>
+  
+<cmt>Pedestrian Crossing</cmt>
+  
+<desc>Pedestrian Crossing</desc>
+
+</wpt>
+
+<wpt lat="34.134121250" lon="133.646043150">
+  
+<name>Parking:山上駐車場</name>
+  
+<cmt>Parking:山上駐車場</cmt>
+  
+<desc>Parking:山上駐車場</desc>
+
+</wpt>

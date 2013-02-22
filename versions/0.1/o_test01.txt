@@ -1,0 +1,6 @@
+<item>
+<pubDate>2013-02-17T14:33:40+09:00</pubDate>
+<category>Parking</category>
+<title>吉野川サービスエリア (Yoshinogawa SA)</title>
+<content:encoded>吉野川サービスエリア (Yoshinogawa SA)</content:encoded>
+</item>
