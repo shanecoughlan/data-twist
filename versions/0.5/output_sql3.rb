@@ -3,6 +3,7 @@
 # This is a Data Twist file
 # Experimental script to twist Open Data into new shapes
 # Copyright (c) 2013 Kana Fukuma and Shane Coughlan
+# Version 0.5
 # 
 # Data Twist is Free Software. You might also call it Open Source.
 # You can redistribute it and/or modify it under either the terms of the
@@ -136,7 +137,7 @@ end
 def output(last_str,outputfile,array)
 	post_author = 1
 	count = 0
-	content = "<br/>[geo_mashup_map zoom=16]<br/><small>Geo-data from OpenStreetMap. &copy; OpenStreetMap contributors. OpenStreetMap is <i>open data</i>, licensed under the <a href=\"http://opendatacommons.org/licenses/odbl/\">Open Data Commons Open Database License</a> (ODbL)</small><br/>This entry was last updated: "
+	content = "<br/><br/>[geo_mashup_map zoom=16]<br/><br/>Data from OpenStreetMap. Data from OpenStreetMap. &copy; OpenStreetMap contributors. OpenStreetMap is <i>open data</i>, licensed under the <a href=\"http://opendatacommons.org/licenses/odbl/\">Open Data Commons Open Database License</a> (ODbL)<br/><br/>Last updated:"
 	File.open(outputfile,"a") { |f|
 		
 		# write about the "wp_posts" file
@@ -183,6 +184,7 @@ def output(last_str,outputfile,array)
 		}
 	}
 end
+
 #inputfile = "test-mapquest-xapi-london-amenity-wildcard-data-big.osm" # -> sql5
 #inputfile = "osm-website-central-matsue.osm.xml" # -> sql6
 inputfile = "osm-website-central-matsue-min.osm.xml"

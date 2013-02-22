@@ -3,7 +3,7 @@
 # This is a Data Twist file
 # Experimental script to twist Open Data into new shapes
 # Copyright (c) 2013 Kana Fukuma and Shane Coughlan
-# Version 0.8
+# Version 0.7
 # 
 # Data Twist is Free Software. You might also call it Open Source.
 # You can redistribute it and/or modify it under either the terms of the
@@ -251,8 +251,8 @@ def check_same_place(array)
 end
 
 #inputfile = "osmosis-tokyo-shops.xml" # -> sql9
-inputfile = "input.osm.xml" # -> sql8
-outputfile = "output.sql"
+inputfile = "osm-website-central-matsue.osm.xml" # -> sql8
+outputfile = "o_sql08.sql"
 array,term_count = input(inputfile)
 last_str = copy_format(outputfile)
 output(last_str,outputfile,array,term_count)

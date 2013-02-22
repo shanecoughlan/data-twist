@@ -1,5 +1,14 @@
 # encoding: utf-8
 
+# This is a Data Twist file
+# Experimental script to twist Open Data into new shapes
+# Copyright (c) 2013 Kana Fukuma and Shane Coughlan
+# Version 0.1
+# 
+# Data Twist is Free Software. You might also call it Open Source.
+# You can redistribute it and/or modify it under either the terms of the
+# 2-clause BSDL (see the file BSDL), or the terms listed in README.md
+
 #require 'open-uri' # open-uriライブラリ読み込み
 require 'kconv' # cmdにREXMLでの処理結果の文字列を表示するためのライブラリ
 require 'Date'

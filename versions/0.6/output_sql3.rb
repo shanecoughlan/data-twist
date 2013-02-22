@@ -3,6 +3,7 @@
 # This is a Data Twist file
 # Experimental script to twist Open Data into new shapes
 # Copyright (c) 2013 Kana Fukuma and Shane Coughlan
+# Version 0.6
 # 
 # Data Twist is Free Software. You might also call it Open Source.
 # You can redistribute it and/or modify it under either the terms of the
@@ -25,14 +26,7 @@ def input(inputfile)
 	lon = 0.0
 	type = ""
 	timestamp = ""
-	shop = ""
-	amenity = ""
 	flag = false
-	same_data = 0
-	write_data = 0
-	all = 0
-	term = 0
-	term_count = [0,0] # [0] = shop_count, [1] = amenity_count
 
 	# filename input
 	begin
@@ -49,7 +43,7 @@ def input(inputfile)
 	
 	print "\n------------\n\n"
 	
-#	begin
+	begin
 		# read a line of the file
 		file.each_line { |line|
 
@@ -81,15 +75,9 @@ def input(inputfile)
 				end
 				
 				# desc
-				if line.match("k=\"shop\"")
+				if line.match("k=\"amenity\"")
 					if /v="(.*)"/ =~ line
-						shop = $1
-						term_count[0] = term_count[0]+1
-					end
-				elsif line.match("k=\"amenity\"")
-					if /v="(.*)"/ =~ line
-						amenity = $1
-						term_count[1] = term_count[1]+1
+						desc = $1
 					end
 				end
 			end
@@ -102,23 +90,7 @@ def input(inputfile)
 					e_name = URI.escape(e_name)
 					timestamp.gsub!("T", " ")
 					timestamp.gsub!("Z", " ")
-					if shop != ""
-						desc = shop
-						term = 3
-					elsif amenity != ""
-						desc = amenity
-						term = 4
-					else
-						term = 0
-					end
-					if (a = array.select{ |a| a[4] == lat && a[5] == lon}) == []
-						array << [type,name,desc,id,lat,lon,e_name,timestamp,term]
-						write_data = write_data + 1
-					else
-						#p a
-						#puts "duplication data:#{id},#{name},#{lat},#{lon}"
-						same_data = same_data + 1
-					end
+					array << [type,name,desc,id,lat,lon,e_name,timestamp]
 					print "."
 				end
 
@@ -128,24 +100,17 @@ def input(inputfile)
 				desc = ""
 				lat = 0.0
 				lon = 0.0
-				shop = ""
-				amenity = ""
-				term = 0
 				type = ""
 				timestamp = ""
 				flag = false
-				
 			end
 		}
-	#rescue
-	#	print "error"
-	#end
+	rescue
+		print "error"
+	end
 
-	print "\n------------\n"
-	puts "same data : #{same_data}"
-	puts "write data : #{write_data}"
-	puts "all data :#{same_data + write_data}"
-	return array,term_count
+	print "\n------------\n\n"
+	return array
 end
 
 # copy sql_format
@@ -169,7 +134,7 @@ def copy_format(new_file)
 end
 
 # output
-def output(last_str,outputfile,array,term_count)
+def output(last_str,outputfile,array)
 	post_author = 1
 	count = 0
 	content = "<br/>[geo_mashup_map zoom=16]<br/><small>Geo-data from OpenStreetMap. &copy; OpenStreetMap contributors. OpenStreetMap is <i>open data</i>, licensed under the <a href=\"http://opendatacommons.org/licenses/odbl/\">Open Data Commons Open Database License</a> (ODbL)</small><br/>This entry was last updated: "
@@ -213,45 +178,16 @@ def output(last_str,outputfile,array,term_count)
 		}
 		f.write ";\n\n"
 
-		count = 0
-		# write about the "wp_term_relationships" file
-		f.write "--\n-- Dumping data for table `wp_term_relationships`\n--\n\n"
-		f.write "INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES\n"
-		
-		array.each { |a|
-			count = count + 1
-			f.write "(#{a[3]}, #{a[8]}, 0)"
-			
-			f.write ",\n" if array.length != count
-		}
-		f.write ";\n\n"
-
-		count = 0
-		# write about the wp_term_taxonomy
-		f.write "--\n-- Dumping data for table `wp_term_taxonomy`\n--\n\n"
-		f.write "INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES\n"
-		
-		f.write "(3,3,'category','shop',1,#{term_count[0]}),\n"
-		f.write "(4,4,'category','amenity',1,#{term_count[1]});\n\n"
-
-
 		# write the last string
 		last_str.each { |str|
 			f.write str
 		}
 	}
 end
-
-def check_same_place(array)
-	array.each{ |a|
-		latlon << [a[4],a[5]]
-	}
-	
-end
-
-#inputfile = "osmosis-tokyo-shops.xml" # -> sql9
-inputfile = "osm-website-central-matsue.osm.xml" # -> sql8
-outputfile = "o_sql08.sql"
-array,term_count = input(inputfile)
+#inputfile = "test-mapquest-xapi-london-amenity-wildcard-data-big.osm" # -> sql5
+#inputfile = "osm-website-central-matsue.osm.xml" # -> sql6
+inputfile = "osm-website-central-matsue-min.osm.xml"
+outputfile = "o_sql07.sql"
+array = input(inputfile)
 last_str = copy_format(outputfile)
-output(last_str,outputfile,array,term_count)
+output(last_str,outputfile,array)
