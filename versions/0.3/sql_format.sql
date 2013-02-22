@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `phjrsz_wp4`
+-- Database: `phjrsz_wp7`
 --
 
 -- --------------------------------------------------------
@@ -62,11 +62,11 @@ CREATE TABLE IF NOT EXISTS `wp_posts` (
 --
 
 CREATE TABLE IF NOT EXISTS `wp_geo_mashup_locations` (
-  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `lat` float(11,7) NOT NULL,
-  `lng` float(11,7) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `lat` double(11,7) NOT NULL,
+  `lng` double(11,7) NOT NULL,
   `address` tinytext,
-  `saved_name` varchar(100) DEFAULT NULL,
+  `saved_name` varchar(200) DEFAULT NULL,
   `geoname` tinytext,
   `postal_code` tinytext,
   `country_code` varchar(2) DEFAULT NULL,
@@ -87,12 +87,40 @@ CREATE TABLE IF NOT EXISTS `wp_geo_mashup_locations` (
 CREATE TABLE IF NOT EXISTS `wp_geo_mashup_location_relationships` (
   `object_name` varchar(80) NOT NULL,
   `object_id` bigint(20) NOT NULL,
-  `location_id` mediumint(9) NOT NULL,
+  `location_id` bigint(20) NOT NULL,
   `geo_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`object_name`,`object_id`,`location_id`),
   KEY `object_name` (`object_name`,`object_id`),
   KEY `object_date_key` (`object_name`,`geo_date`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `wp_term_relationships`
+--
+
+CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
+  `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `term_taxonomy_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `term_order` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`object_id`,`term_taxonomy_id`),
+  KEY `term_taxonomy_id` (`term_taxonomy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `wp_term_taxonomy`
+--
+
+CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
+  `term_taxonomy_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `term_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `taxonomy` varchar(32) NOT NULL DEFAULT '',
+  `description` longtext NOT NULL,
+  `parent` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `count` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`term_taxonomy_id`),
+  UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
+  KEY `taxonomy` (`taxonomy`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 
 
