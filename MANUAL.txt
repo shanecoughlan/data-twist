@@ -132,42 +132,37 @@ You will notice several different files and directories in our GitHub
 repository. Essentially we are included the proof-of-concept steps that lead
 us to the currently-used solution, which will always be located in the root.
 
-To use the current root solution as of 19th February 2013, execute a command
-with "ruby output_sql3.rb"
+To use the current root solution as of 22nd February 2013, execute a command
+with "ruby data-twist.rb"
 
-This will read "osm-website-central-matsue-min.osm.xml" and use "sql_format.sql"
-as a templete to write the output file. At the moment that is called
-"o_sql07.sql"
+This will read "input.osm.xml" and use "sql_format.sql" as a templete to
+write the output file. At the moment that is called "output.sql"
 
 There are those who say we don't think up sexy names for our files. They are
 wrong.
 
-Anyway, load "o_sql07.sql" into your Wordpress MySQL database. Don't
-forget to install Wordpress and the Geo Mashup plug-in first.
+Anyway, you are nearly ready to load "output.sql" into your Wordpress MySQL
+database. Don't forget to install Wordpress and the Geo Mashup plug-in first.
+Please also take a moment to review the "BUGS" file to work around current
+headaches.
+
+Then:
+(1) Import "prepare_term_taxonomy.sql" into your database
+(2) Import "output.sql" to load your directory
+(3) Optionally import "setup_pages.sql" to add our "overview map" and "about"
+pages.
+
+That's it! You should be ready to go!
 
 
-There are three iterations of our experiments in the current repo.
-
-The first is simpleXML2XML, where a Ruby script takes simple POI from a
-Cloudmade download to transform the data into a format that allows import
-through the Wordpress RSS import feature. This allowed import of items
-that did not have duplicate titles, but ran into issue with the automatic
-duplication filter used by Wordpress for RSS import.
-
-The second is simpleXML2dbXML, an experiment to push the data directly into
-a Wordpress MySQL database and avoid any duplication filters. This had
-import errors with phpMyAdmin. Then we found that an export from the same
-application failed to import too, so we decided it's probably better to
-look for a more flexbile solution.
-
-The third iteration is simpleXML2SQL, which allows us to convert the data
-from OpenStreetMap into a format that can be imported into a Wordpress
-database in several ways. It looks like a winner, and Kana included geo
-awareness for the Geo Mashup plug-in.
+There are older iterations of our experiments in the current repo under the
+folder called "versions"
 
 The basic usage instructions for the earlier proof-of-concept code is the
 same, but please restrict usage to the test data included in each folder. It's
-unlikely to work elsewhere.
+unlikely to work elsewhere. Please also note that these scripts are still
+being added to the server, so something might be in the wrong place or
+fail to work for another silly reason.
 
 == Notes ==
 

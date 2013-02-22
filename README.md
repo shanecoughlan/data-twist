@@ -26,18 +26,31 @@ database.
 Usage
 -----
 
-To use the current root solution as of 19th February 2013, execute a command
-with "ruby output_sql3.rb"
+You will notice several different files and directories in our GitHub
+repository. Essentially we are included the proof-of-concept steps that lead
+us to the currently-used solution, which will always be located in the root.
 
-This will read "osm-website-central-matsue-min.osm.xml" and use "sql_format.sql"
-as a templete to write the output file. At the moment that is called
-"o_sql07.sql"
+To use the current root solution as of 22nd February 2013, execute a command
+with "ruby data-twist.rb"
+
+This will read "input.osm.xml" and use "sql_format.sql" as a templete to
+write the output file. At the moment that is called "output.sql"
 
 There are those who say we don't think up sexy names for our files. They are
 wrong.
 
-Anyway, load "o_sql07.sql" into your Wordpress MySQL database. Don't
-forget to install Wordpress and the Geo Mashup plug-in first.
+Anyway, you are nearly ready to load "output.sql" into your Wordpress MySQL
+database. Don't forget to install Wordpress and the Geo Mashup plug-in first.
+Please also take a moment to review the "BUGS" file to work around current
+headaches.
+
+Then:
+(1) Import "prepare_term_taxonomy.sql" into your database
+(2) Import "output.sql" to load your directory
+(3) Optionally import "setup_pages.sql" to add our "overview map" and "about"
+pages.
+
+That's it! You should be ready to go!
 
 Warning
 -------
