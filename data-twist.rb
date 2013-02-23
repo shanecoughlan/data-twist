@@ -3,7 +3,7 @@
 # This is a Data Twist file
 # Experimental script to twist Open Data into new shapes
 # Copyright (c) 2013 Kana Fukuma and Shane Coughlan
-# Version 0.8
+# Version 0.9
 # 
 # Data Twist is Free Software. You might also call it Open Source.
 # You can redistribute it and/or modify it under either the terms of the
@@ -16,7 +16,7 @@ require 'Date'
 
 # input
 def input(inputfile)
-	# initialize
+	# initialize the script
 	count = 0
 	array = []
 	id = 0
@@ -44,14 +44,14 @@ def input(inputfile)
 	
 		file = File.read(filename)
 	rescue
-		print "\n*** Error : Please one more again! ***\n"
-		retry
+		print "\n<data-twist says> I cannot see the input file. Please try again.\n"
+		# retry <- commented out because it causes an infinite loop when no input is found
 	end
 	
 	print "\n------------\n\n"
 	
 #	begin
-		# read a line of the file
+		# read a line from the file
 		file.each_line { |line|
 
 			# id, lat and lon
@@ -143,15 +143,15 @@ def input(inputfile)
 	#end
 
 	print "\n------------\n"
-	puts "same data : #{same_data}"
-	puts "write data : #{write_data}"
-	puts "all data :#{same_data + write_data}"
+	puts "<data-twist says> I found #{same_data} duplicate entries in the input file."
+	puts "<data-twist says> I wrote #{write_data} locations to the output file."
+	puts "<data-twist says> I processed a total of #{same_data + write_data} locations during my analysis."
 	return array,term_count
 end
 
 # copy sql_format
 def copy_format(new_file)
-	filename = "sql_format.sql" # format_file
+	filename = "sql_format.sql" # the sql format information
 	last_str = []
 	num = 0
 
@@ -159,10 +159,10 @@ def copy_format(new_file)
 	file = File.read(filename)
 	File.open(new_file,"w"){ |output|
 		file.each_line { |input|
-			if input.include?("=@OLD") # catch the last string
+			if input.include?("=@OLD") # catches the last string
 				last_str << input
 			else
-				output.write input # write the output file
+				output.write input # writes the output file
 			end
 		}
 	}
@@ -250,9 +250,8 @@ def check_same_place(array)
 	
 end
 
-#inputfile = "osmosis-tokyo-shops.xml" # -> sql9
-inputfile = "input.osm.xml" # -> sql8
-outputfile = "output.sql"
+inputfile = "input.osm.xml" # -> the name can be changed to anything you need
+outputfile = "output.sql" # -> the name can be changed to anything you need
 array,term_count = input(inputfile)
 last_str = copy_format(outputfile)
 output(last_str,outputfile,array,term_count)

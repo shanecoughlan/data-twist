@@ -1,6 +1,6 @@
 ## Release 0.9
 
-Sat Feb 23 08:30:55 2013  Shane Coughlan  <shane@opendawn.com>
+Sat Feb 23 11:30:00 2013  Shane Coughlan  <shane@opendawn.com>
 
 	* Cleaned up English language feedback to users
 	* Removed the loop when an input filename is not found
