@@ -3,7 +3,7 @@
 # This is a Data Twist file
 # Experimental script to twist Open Data into new shapes
 # Copyright (c) 2013 Kana Fukuma and Shane Coughlan
-# Version 0.10
+# Version 0.11
 # 
 # Data Twist is Free Software. You might also call it Open Source.
 # You can redistribute it and/or modify it under either the terms of the
@@ -232,8 +232,8 @@ def output(last_str,outputfile,array,term_count)
 		f.write "--\n-- Dumping data for table `wp_term_taxonomy`\n--\n\n"
 		f.write "INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES\n"
 		
-		f.write "(3,3,'category','shop',1,#{term_count[0]}),\n"
-		f.write "(4,4,'category','amenity',1,#{term_count[1]});\n\n"
+		f.write "(3,3,'category','shop',0,#{term_count[0]}),\n"
+		f.write "(4,4,'category','amenity',0,#{term_count[1]});\n\n"
 
 
 		# write the last string
