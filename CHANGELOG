@@ -1,3 +1,12 @@
+## Release 0.12
+
+Sat Feb 24 23:50:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added support for command line options
+	* Added sanity checks for missing input and output files
+	* Added variables for program name, version, copyright
+	* Updated documentation to reflect new usage
+
 ## Release 0.11
 
 Sat Feb 24 13:15:00 2013  Shane Coughlan  <shane@opendawn.com>

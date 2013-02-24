@@ -26,20 +26,15 @@ database.
 Usage
 -----
 
-You will notice several different files and directories in our GitHub
-repository. Essentially we are included the proof-of-concept steps that lead
-us to the currently-used solution, which will always be located in the root.
+Usage overview: data-twist.rb [input file] [output file]
+    -l, --load FILE                  Load a file
+    -o, --output FILE                Create the output file
+    -h, --help                       Display this usage overview
+    -v, --version                    Show the version number
 
-To use the current root solution as of 24th February 2013, execute a command
-with "ruby data-twist.rb"
+If you fail to specify an output file the script will default to "output.sql"
 
-This will read "input.osm.xml" and use "sql_format.sql" as a templete to
-write the output file. At the moment that is called "output.sql"
-
-There are those who say we don't think up sexy names for our files. They are
-wrong.
-
-Anyway, you are nearly ready to load "output.sql" into your Wordpress MySQL
+After Data Twist processes the data, load "output.sql" into your Wordpress MySQL
 database. Don't forget to install Wordpress and the Geo Mashup plug-in first.
 
 Then:

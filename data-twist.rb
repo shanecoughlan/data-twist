@@ -3,7 +3,6 @@
 # This is a Data Twist file
 # Experimental script to twist Open Data into new shapes
 # Copyright (c) 2013 Kana Fukuma and Shane Coughlan
-# Version 0.11
 # 
 # Data Twist is Free Software. You might also call it Open Source.
 # You can redistribute it and/or modify it under either the terms of the
@@ -12,7 +11,12 @@
 require 'uri'
 require 'kconv'
 require 'Date'
+require 'optparse'
 
+$PROGRAM_NAME = 'Data Twist'
+$PROGRAM_VERSION = '0.12'
+$PROGRAM_COPYRIGHT = 'Copyright (c) 2013 Kana Fukuma and Shane Coughlan'
+$PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
 
 # input
 def input(inputfile)
@@ -37,15 +41,8 @@ def input(inputfile)
 
 	# filename input
 	begin
-		#print "Please input filename: "
-		#filename = gets.chop
 		filename = inputfile
-		#puts "filename:#{filename}\n"
-	
 		file = File.read(filename)
-	rescue
-		print "\n<data-twist says> I cannot see the input file. Please try again.\n"
-		# retry <- commented out because it causes an infinite loop when no input is found
 	end
 	
 	print "\n------------\n\n"
@@ -143,9 +140,9 @@ def input(inputfile)
 	#end
 
 	print "\n------------\n"
-	puts "<data-twist says> I found #{same_data} duplicate entries in the input file."
-	puts "<data-twist says> I wrote #{write_data} locations to the output file."
-	puts "<data-twist says> I processed a total of #{same_data + write_data} locations during my analysis."
+	puts "I found #{same_data} duplicate entries in the input file."
+	puts "I wrote #{write_data} locations to the output file."
+	puts "I processed a total of #{same_data + write_data} locations during my analysis."
 	return array,term_count
 end
 
@@ -250,8 +247,57 @@ def check_same_place(array)
 	
 end
 
-inputfile = "input.osm.xml" # -> the name can be changed to anything you need
-outputfile = "output.sql" # -> the name can be changed to anything you need
+# check the command line for options
+options = {}
+QA = OptionParser.new do |opts|
+	
+  # prepares an overview banner for the --help switch
+	opts.banner = "\nUsage overview: data-twist.rb [input file] [output file]"
+    
+  # takes the input file name
+	options[:load_file] = ""
+		opts.on( '-l', '--load FILE', "Load a file" ) do|load_file|
+		options[:load_file] = load_file
+	end
+
+  # takes the output file name
+	options[:output_file] = ""
+		opts.on( '-o', '--output FILE', "Create the output file" ) do|output_file|
+		options[:output_file] = output_file
+	end 
+   
+  # displays the help screen
+	opts.on( '-h', '--help', 'Display this usage overview' ) do
+		puts opts
+		exit
+	end
+	
+  # shows the version, copyright and license
+	opts.on( '-v', '--version', 'Show the version number' ) do
+		puts "You are using #{$PROGRAM_NAME} #{$PROGRAM_VERSION}"
+		puts "#{$PROGRAM_COPYRIGHT}"
+		puts "#{$PROGRAM_LICENSE}"
+		exit
+	end
+	
+end.parse!
+
+  # check to deal with a missing input file name
+	if options[:load_file].empty?
+		then
+		puts "\nI cannot see the input file. Please try again."
+		puts "\nYou can get help by typing 'ruby data-twist.rb -h'"
+		puts "\n"
+		exit
+	end
+		
+  # check to insert a default output file name if needed
+	if options[:output_file].empty?
+		then options[:output_file] = "output.sql"
+	end
+
+inputfile = "#{options[:load_file]}" # this takes values from options[:load_file]
+outputfile = "#{options[:output_file]}" # this takes values from options[:output_file]
 array,term_count = input(inputfile)
 last_str = copy_format(outputfile)
 output(last_str,outputfile,array,term_count)
