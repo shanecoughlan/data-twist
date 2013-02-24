@@ -1,3 +1,13 @@
+## Release 0.11
+
+Sat Feb 24 13:15:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* There appeared to be a bug with the way that the 
+	  sub-categories "shop" and "amenity" were displaying 
+	  (see https://github.com/shanecoughlan/data-twist/issues/10)
+	  Fixed and tested, so looking good now, though we 
+	  might want to dig into this further in the future.
+
 ## Release 0.10
 
 Sat Feb 24 12:30:00 2013  Shane Coughlan  <shane@opendawn.com>
