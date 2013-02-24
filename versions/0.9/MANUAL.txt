@@ -1,0 +1,178 @@
+Welcome to the Data Twist documentation. Here be dragons.
+
+Contents:
+== Introduction ==
+== Dependancies ==
+== Known Issues ==
+== Extracting Big Data ==
+== Usage ==
+== Notes ==
+
+And here we go...
+
+== Introduction ==
+
+Data Twist is an experimental script family to twist Open Data into new shapes.
+
+These scripts are designed to take OpenStreetMap XML data and import it into a
+geo-aware version of Wordpress. This allows information like shops and tourist
+locations to quickly populate directories, at least in theory.
+
+The initial focus is on allowing OSM website XML downloads, XAPI pulls and
+Osmosis node filters from a database to be converted into SQL files that we can
+quickly load into a Wordpress install. There are some dependencies at the
+moment, with the key item being the Geo Mashup plug-in for Wordpress to allow
+us to store geo-references with each post.
+
+Data Twist is not a solution for making local directories by itself. It is the
+foundation for doing so via Open Data in the form of a OpenStreetMap's
+database.
+
+Data Twist is a Ruby application. It was originally coded in Spring 2013 by
+Kana Fukuma and Shane Coughlan over a four day (24 hour) hack session. Our
+goal was to provide proof-of-concept regarding the "twisting" of Open Data
+into new use cases. The idea is that this can help more people do more cool
+things.
+
+== Dependancies ==
+
+Data Twist has some dependancies.
+
+(1) A working Ruby installation. We used version 1.9.2p290.
+(2) An XML version of the OpenStreetMap data. The ".osm" files will work.
+(3) A vanilla Wordpress installation. We used version 3.5.1.
+(4) The Geo Mashup plug-in for Wordpress installed. We used version 1.5.2.
+
+To protect your sanity while playing with massive amounts of data from
+OpenStreetMap you will probably also find Osmosis and OSMembrane useful.
+
+Osmosis is the Java-based command line tool for manipulating OpenStreetMap
+data. It works very well on its own. We used version 0.41:
+http://bretth.dev.openstreetmap.org/osmosis-build/osmosis-0.41.tgz
+http://bretth.dev.openstreetmap.org/osmosis-build/osmosis-0.41.zip
+http://dev.openstreetmap.de:23457/hudson/job/osmosis-release/6/
+
+When dealing with large data-sets you might need various command-line options
+to ensure the process completes. It's a lot easier to hand over this job to
+someone else, and that's where OSMembrane comes it. It calls Osmosis in a
+smart and easy way. We used OSMembrane Build 845:
+http://code.google.com/p/osmembrane-gui/
+
+== Known Issues ==
+
+Data Twist has several known issues.
+(1) It will probably only work on a vanilla Wordpress installation. This is
+due to the way that we write directly to the Wordpress database both for
+creating new posts and for adding geo-data to Geo Mashup tables. This places
+some limitations on how you can use it.
+(2) It will probably only work on single site installations of Wordpress for
+much the same reasons as point (1). This issue, as with point (1), can be
+overcome with testing. It's a code maturity issue.
+(3) Data Twist can conflict with Wordpress plug-ins that want to oversee
+posts. For example, we encountered errors with getting it to work on a
+Wordpress installation with WPML. This is a high-priority bug and will be
+address in the next development phase.
+(4) Data Twist currently fails when trying to import duplicate OpenStreetMap
+data. For example, if the data has the same ID, it fails. 
+
+Did you find a new issue? Submit a bug:
+https://github.com/shanecoughlan/data-twist/issues
+
+== Extracting Big Data ==
+
+There are different types of OpenStreetMap data that you can download and use
+as the basis of local maps or directories.
+
+If you want to download the whole world, you can obtain "the planet" from the
+OpenStreetMap project website at this URL:
+http://planet.openstreetmap.org/planet/
+(you want to download planet-latest.osm.bz2)
+
+You can also download extracts by continent or country at this URL:
+http://download.geofabrik.de/openstreetmap/
+
+We downloaded some test data for Tokyo city at this URL:
+http://metro.teczno.com
+
+However, this resource looks even more promising for quick tests:
+http://download.bbbike.org/osm/
+
+We started our testing on simple (and outdate) XML data from Cloudmade:
+http://downloads.cloudmade.com
+This data is from the OpenStreetMap database, but be aware that supporting its
+structure will not mean you can support imports from most OpenStreetMap
+resources. To do that please look at the links above.
+
+Our second test data-sets were obtained via the OpenStreetMap XAPI. Here is an
+example dataset of 223 public libraries in London, UK that we used:
+wget --timeout=0  http://open.mapquestapi.com/xapi/api/0.6/node[amenity=library][bbox=-0.57,51.24,0.31,51.75] -O data.osm
+
+This data was useful to help us do basic imports, though when we tried to
+scale up to larger datasets using a similar command we ran into database
+duplication errors around the entries. This issue is worth expanding on, as
+it is something you are likely to find when experimenting too. Learn more here:
+https://github.com/shanecoughlan/data-twist/issues/5
+
+As we proceeded from simple OpenStreetMap XML to more complex sets we decided
+to focus on the website export from OpenStreetMap for our test-case setup, and
+loaded data from Matsue city, Shimane Prefecture, Japan. This data is lined
+up to be our first "demo recipe", and will be complemented by a second
+"demo recipe" using Osmosis data in time.
+
+Essentially the import process filters <nodes> by searching for <tag> with
+" k="amenity" v="type" " data inside. We use the "amenity" as a positive hit
+and the "type" as an information type listed in the resulting Wordpress post.
+We read the <tag> that contains the name and use this as the title. We also
+read the node timestamp and use this both to record a data for the information
+and to show a "last updated" note in the relevant post.
+
+== Usage ==
+
+You will notice several different files and directories in our GitHub
+repository. Essentially we are included the proof-of-concept steps that lead
+us to the currently-used solution, which will always be located in the root.
+
+To use the current root solution as of 22nd February 2013, execute a command
+with "ruby data-twist.rb"
+
+This will read "input.osm.xml" and use "sql_format.sql" as a templete to
+write the output file. At the moment that is called "output.sql"
+
+There are those who say we don't think up sexy names for our files. They are
+wrong.
+
+Anyway, you are nearly ready to load "output.sql" into your Wordpress MySQL
+database. Don't forget to install Wordpress and the Geo Mashup plug-in first.
+Please also take a moment to review the "BUGS" file to work around current
+headaches.
+
+Then:
+(1) Import "prepare_term_taxonomy.sql" into your database
+(2) Import "output.sql" to load your directory
+(3) Optionally import "setup_pages.sql" to add our "overview map" and "about"
+pages.
+
+That's it! You should be ready to go!
+
+
+There are older iterations of our experiments in the current repo under the
+folder called "versions"
+
+The basic usage instructions for the earlier proof-of-concept code is the
+same, but please restrict usage to the test data included in each folder. It's
+unlikely to work elsewhere. Please also note that these scripts are still
+being added to the server, so something might be in the wrong place or
+fail to work for another silly reason.
+
+== Notes ==
+
+This project provides a proof-of-concept for twisting OpenStreetMap data
+into new shapes. In our case we are helping people build Open Source
+geo-directories using Open Data (OpenStreetMap) and Open Source (Wordpress) as
+a foundation.
+
+To contact us please use the following addresses. We are always glad to get
+input.
+
+Shane Coughlan <shane@opendawn.com>
+Kana Fukuma <kana@opendawn.com> (Japanese preferred)

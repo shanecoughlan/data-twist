@@ -30,7 +30,7 @@ You will notice several different files and directories in our GitHub
 repository. Essentially we are included the proof-of-concept steps that lead
 us to the currently-used solution, which will always be located in the root.
 
-To use the current root solution as of 22nd February 2013, execute a command
+To use the current root solution as of 24th February 2013, execute a command
 with "ruby data-twist.rb"
 
 This will read "input.osm.xml" and use "sql_format.sql" as a templete to
@@ -41,8 +41,6 @@ wrong.
 
 Anyway, you are nearly ready to load "output.sql" into your Wordpress MySQL
 database. Don't forget to install Wordpress and the Geo Mashup plug-in first.
-Please also take a moment to review the "BUGS" file to work around current
-headaches.
 
 Then:
 (1) Import "prepare_term_taxonomy.sql" into your database
