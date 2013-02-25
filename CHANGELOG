@@ -1,6 +1,12 @@
+## Release 0.13
+
+Mon Feb 25 12:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added progress feedback while reading the input file
+
 ## Release 0.12
 
-Sat Feb 24 23:50:00 2013  Shane Coughlan  <shane@opendawn.com>
+Sun Feb 24 23:50:00 2013  Shane Coughlan  <shane@opendawn.com>
 
 	* Added support for command line options
 	* Added sanity checks for missing input and output files
@@ -9,7 +15,7 @@ Sat Feb 24 23:50:00 2013  Shane Coughlan  <shane@opendawn.com>
 
 ## Release 0.11
 
-Sat Feb 24 13:15:00 2013  Shane Coughlan  <shane@opendawn.com>
+Sun Feb 24 13:15:00 2013  Shane Coughlan  <shane@opendawn.com>
 
 	* There appeared to be a bug with the way that the 
 	  sub-categories "shop" and "amenity" were displaying 
@@ -19,7 +25,7 @@ Sat Feb 24 13:15:00 2013  Shane Coughlan  <shane@opendawn.com>
 
 ## Release 0.10
 
-Sat Feb 24 12:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+Sun Feb 24 12:30:00 2013  Shane Coughlan  <shane@opendawn.com>
 
 	* In the 'output' area, at "array.each { |a|",
 	  item 12 and 19, I substituted "#{a[6]}-#{a[3]}"

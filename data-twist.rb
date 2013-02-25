@@ -14,7 +14,7 @@ require 'Date'
 require 'optparse'
 
 $PROGRAM_NAME = 'Data Twist'
-$PROGRAM_VERSION = '0.12'
+$PROGRAM_VERSION = '0.13'
 $PROGRAM_COPYRIGHT = 'Copyright (c) 2013 Kana Fukuma and Shane Coughlan'
 $PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
 
@@ -117,7 +117,10 @@ def input(inputfile)
 						#puts "duplication data:#{id},#{name},#{lat},#{lon}"
 						same_data = same_data + 1
 					end
-					print "."
+					# this is the progress feedback
+					(write_data + same_data + 1).times do |processed|
+					print "\rLocations processed so far: #{processed}"
+					end
 				end
 
 				# initialize
@@ -139,7 +142,7 @@ def input(inputfile)
 	#	print "error"
 	#end
 
-	print "\n------------\n"
+	print "\n\n== Summary ==\n"
 	puts "I found #{same_data} duplicate entries in the input file."
 	puts "I wrote #{write_data} locations to the output file."
 	puts "I processed a total of #{same_data + write_data} locations during my analysis."
