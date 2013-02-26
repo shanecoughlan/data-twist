@@ -34,14 +34,20 @@ Usage overview: data-twist.rb [input file] [output file]
 
 If you fail to specify an output file the script will default to "output.sql"
 
-After Data Twist processes the data, load "output.sql" into your Wordpress MySQL
-database. Don't forget to install Wordpress and the Geo Mashup plug-in first.
+After Data Twist processes the data, load "output.sql" into your Wordpress 
+database:
 
-Then:
-(1) Import "prepare_term_taxonomy.sql" into your database
+(1) Drop the following tables from the Wordpress database to ensure it is
+clean:
+ - wp_geo_mashup_locations
+ - wp_geo_mashup_location_relationships
+ - wp_posts
+ - wp_terms
+ - wp_term_relationships
+ - wp_term_taxonomy
+(you can do this through your SQL web admin tools like phpMyAdmin)
+
 (2) Import "output.sql" to load your directory
-(3) Optionally import "setup_pages.sql" to add our "overview map" and "about"
-pages.
 
 That's it! You should be ready to go!
 

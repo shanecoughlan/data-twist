@@ -14,7 +14,7 @@ require 'Date'
 require 'optparse'
 
 $PROGRAM_NAME = 'Data Twist'
-$PROGRAM_VERSION = '0.13'
+$PROGRAM_VERSION = '0.14'
 $PROGRAM_COPYRIGHT = 'Copyright (c) 2013 Kana Fukuma and Shane Coughlan'
 $PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
 
