@@ -23,10 +23,10 @@ Data Twist is not a solution for making local directories by itself. It is the
 foundation for doing so via Open Data in the form of a OpenStreetMap's
 database.
 
-<pre>
 Usage
 -----
 
+<pre>
 Usage overview: data-twist.rb [input file] [output file]
     -l, --load FILE                  Load a file
     -o, --output FILE                Create the output file
