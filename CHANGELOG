@@ -1,3 +1,12 @@
+## Release 0.15
+
+Wed Feb 27 21:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added the "--get" option to download files when
+	  Data Twist is given a URL
+	* Please note that automatic unpacking and then
+	  loading the file for processing is still pending
+
 ## Release 0.14
 
 Tue Feb 26 18:30:00 2013  Shane Coughlan  <shane@opendawn.com>

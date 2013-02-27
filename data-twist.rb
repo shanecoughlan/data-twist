@@ -12,9 +12,10 @@ require 'uri'
 require 'kconv'
 require 'Date'
 require 'optparse'
+require 'open-uri'
 
 $PROGRAM_NAME = 'Data Twist'
-$PROGRAM_VERSION = '0.14'
+$PROGRAM_VERSION = '0.15'
 $PROGRAM_COPYRIGHT = 'Copyright (c) 2013 Kana Fukuma and Shane Coughlan'
 $PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
 
@@ -255,7 +256,41 @@ options = {}
 QA = OptionParser.new do |opts|
 	
   # prepares an overview banner for the --help switch
-	opts.banner = "\nUsage overview: data-twist.rb [input file] [output file]"
+	opts.banner = "\nUsage overview: data-twist.rb [options]"
+	
+  # gets a file
+  	options[:load_file] = "" # This is pending review as we expand the code
+		opts.on( '-g', '--get FILE', 'Get a file' ) do|urls|
+		# this code segment is based on code from here:
+		# http://www.ruby-forum.com/topic/92121#183390
+		# Edwin Fine, based on Mariano Kamp's original
+		# urls = %w{
+		# http://download.geofabrik.de/openstreetmap/asia/tajikistan.osm.bz2
+		# } This is legacy from the old code, but keeping it while I review the next step
+
+		BUFFER_SIZE = 8 * 1_024
+
+		urls.each do |url|
+		  puts "Downloading from #{url}"
+		  output_file = url.split(/\//).last
+		  puts "Creating a new file called #{output_file}"
+
+		  open(url, "r",
+		       :content_length_proc => lambda {|content_length| puts "This file is #{content_length} bytes long." },
+		       :progress_proc => lambda { |size| printf("I am downloading it now: %010d bytes\r", size.to_i) }) do |input|
+		    open(output_file, "wb") do |output|
+		      while (buffer = input.read(BUFFER_SIZE))
+		        output.write(buffer)
+		      end
+		    end
+		  end
+		  puts "\nOK, the download is complete."
+		end
+		# puts "All downloads done.", a legacy bit of text from the original code
+		puts "Please unzip the downloaded file before loading it into Data Twist."
+		puts "You can get help by typing 'ruby data-twist.rb -h'"
+		exit
+	end
     
   # takes the input file name
 	options[:load_file] = ""
@@ -270,8 +305,13 @@ QA = OptionParser.new do |opts|
 	end 
    
   # displays the help screen
-	opts.on( '-h', '--help', 'Display this usage overview' ) do
+	opts.on( '-h', '--help', 'Display this overview' ) do
 		puts opts
+		puts   ""
+		puts   "Here are some example commands:"
+		puts   "Get a file with 'ruby data-twist.rb -g URL'"
+		puts   "Convert data with 'ruby data-twist.rb -l [INPUT FILE] -o [OUTPUT]'"
+		puts   ""
 		exit
 	end
 	
