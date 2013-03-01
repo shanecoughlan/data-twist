@@ -320,11 +320,10 @@ QA = OptionParser.new do |opts|
   # shows the version, copyright and license
 	opts.on( '-v', '--version', 'Show the version (バージョンを表示)' ) do
 		puts "\nYou are using #{$PROGRAM_NAME} #{$PROGRAM_VERSION}"
-		puts "#{$PROGRAM_COPYRIGHT}"
-		puts "#{$PROGRAM_LICENSE}"
-		puts "\nThis program is from Japan, so here is our information in Japanese:"
-		puts "\nあなたは、#{$PROGRAM_NAME} #{$PROGRAM_VERSION}を使用している"
+		puts "あなたは、#{$PROGRAM_NAME} #{$PROGRAM_VERSION}を使用している"
+		puts "\n#{$PROGRAM_COPYRIGHT}"
 		puts "#{$PROGRAM_COPYRIGHT_JA}"
+		puts "\n#{$PROGRAM_LICENSE}"
 		puts "#{$PROGRAM_LICENSE_JA}"
 		exit
 	end
