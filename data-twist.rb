@@ -15,9 +15,11 @@ require 'optparse'
 require 'open-uri'
 
 $PROGRAM_NAME = 'Data Twist'
-$PROGRAM_VERSION = '0.15'
+$PROGRAM_VERSION = '0.16'
 $PROGRAM_COPYRIGHT = 'Copyright (c) 2013 Kana Fukuma and Shane Coughlan'
+$PROGRAM_COPYRIGHT_JA = '著作権 (c) 2013 福間加菜とコークラン クェーン マーティン'
 $PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
+$PROGRAM_LICENSE_JA = 'このアプリケーションはルビー+ BSDL下でライセンスされています. 詳細についてはREADME.mdを参照してください。'
 
 # input
 def input(inputfile)
@@ -256,11 +258,11 @@ options = {}
 QA = OptionParser.new do |opts|
 	
   # prepares an overview banner for the --help switch
-	opts.banner = "\nUsage overview: data-twist.rb [options]"
+	opts.banner = "\nUsage overview (使用方法の概要): data-twist.rb [options]"
 	
   # gets a file
   	options[:load_file] = "" # This is pending review as we expand the code
-		opts.on( '-g', '--get FILE', 'Get a file' ) do|urls|
+		opts.on( '-g', '--get FILE', 'Get file (ファイルを取得)' ) do|urls|
 		# this code segment is based on code from here:
 		# http://www.ruby-forum.com/topic/92121#183390
 		# Edwin Fine, based on Mariano Kamp's original
@@ -294,18 +296,18 @@ QA = OptionParser.new do |opts|
     
   # takes the input file name
 	options[:load_file] = ""
-		opts.on( '-l', '--load FILE', "Load a file" ) do|load_file|
+		opts.on( '-l', '--load FILE', 'Load file (ファイルを読み込む)' ) do|load_file|
 		options[:load_file] = load_file
 	end
 
   # takes the output file name
 	options[:output_file] = ""
-		opts.on( '-o', '--output FILE', "Create the output file" ) do|output_file|
+		opts.on( '-o', '--output FILE', 'Create output file (出力ファイル名)' ) do|output_file|
 		options[:output_file] = output_file
 	end 
    
   # displays the help screen
-	opts.on( '-h', '--help', 'Display this overview' ) do
+	opts.on( '-h', '--help', 'Show this overview (この概要を表示)' ) do
 		puts opts
 		puts   ""
 		puts   "Here are some example commands:"
@@ -316,10 +318,14 @@ QA = OptionParser.new do |opts|
 	end
 	
   # shows the version, copyright and license
-	opts.on( '-v', '--version', 'Show the version number' ) do
-		puts "You are using #{$PROGRAM_NAME} #{$PROGRAM_VERSION}"
+	opts.on( '-v', '--version', 'Show the version (バージョンを表示)' ) do
+		puts "\nYou are using #{$PROGRAM_NAME} #{$PROGRAM_VERSION}"
 		puts "#{$PROGRAM_COPYRIGHT}"
 		puts "#{$PROGRAM_LICENSE}"
+		puts "\nThis program is from Japan, so here is our information in Japanese:"
+		puts "\nあなたは、#{$PROGRAM_NAME} #{$PROGRAM_VERSION}を使用している"
+		puts "#{$PROGRAM_COPYRIGHT_JA}"
+		puts "#{$PROGRAM_LICENSE_JA}"
 		exit
 	end
 	
