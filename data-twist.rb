@@ -310,9 +310,11 @@ QA = OptionParser.new do |opts|
 	opts.on( '-h', '--help', 'Show this overview (この概要を表示)' ) do
 		puts opts
 		puts   ""
-		puts   "Here are some example commands:"
-		puts   "Get a file with 'ruby data-twist.rb -g URL'"
-		puts   "Convert data with 'ruby data-twist.rb -l [INPUT FILE] -o [OUTPUT]'"
+		puts   "Example commands (コマンドの例):"
+		puts   "\nGet a file with 'ruby data-twist.rb -g URL'"
+		puts   "'ruby data-twist.rb -g URL'を使用してファイルを取得する"
+		puts   "\nConvert data with 'ruby data-twist.rb -l [INPUT FILE] -o [OUTPUT]'"
+		puts   "'ruby data-twist.rb -l [INPUT FILE] -o [OUTPUT]'を使用してデータを変換します"
 		puts   ""
 		exit
 	end
