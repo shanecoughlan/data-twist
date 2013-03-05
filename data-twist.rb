@@ -17,7 +17,7 @@ require 'open-uri'
 
 # set the program name, version and copyright (プログラム名、バージョン、および著作権を設定する)
 $PROGRAM_NAME = 'Data Twist'
-$PROGRAM_VERSION = '0.17'
+$PROGRAM_VERSION = '0.18'
 $PROGRAM_COPYRIGHT = 'Copyright (c) 2013 Kana Fukuma and Shane Coughlan'
 $PROGRAM_COPYRIGHT_JA = '著作権 (c) 2013 福間加菜とコークラン クェーン マーティン'
 $PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
@@ -114,6 +114,7 @@ def input(inputfile)
 					else
 						term = 0
 					end
+					# this is the checking code to find duplicate latitude and longitude (これは、重複する緯度と経度を見つけるためのチェックコードである)
 					if (a = array.select{ |a| a[4] == lat && a[5] == lon}) == []
 						array << [type,name,desc,id,lat,lon,e_name,timestamp,term]
 						write_data = write_data + 1
@@ -143,10 +144,6 @@ def input(inputfile)
 				
 			end
 		}
-	#  this was commented out because it caused an error loop? Please review. (それはエラーループが発生したため、これはコメントアウトされたのですか？レビューをしてください。)
-	#rescue
-	#	print "error"
-	#end
 
 	print "\n\n== Summary ==\n"
 	puts "I found #{same_data} duplicate entries in the input file."
@@ -247,13 +244,6 @@ def output(last_str,outputfile,array,term_count)
 			f.write str
 		}
 	}
-end
-
-def check_same_place(array)
-	array.each{ |a|
-		latlon << [a[4],a[5]]
-	}
-	
 end
 
 # check the command line for options (オプションについては、コマンドラインを確認)
