@@ -1,0 +1,173 @@
+## Release 0.18
+
+Wed Mar 6 06:40:00 2013  Kana Fukuma  <kana@opendawn.com>
+
+	* Removed old code and improved comments (除去、古いコードと改善コメント)
+
+## Release 0.17
+
+Tue Mar 5 14:10:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added basic Japanese code comments support
+
+## Release 0.16
+
+Thu Mar 1 11:15:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added basic Japanese command line support
+
+## Release 0.15
+
+Wed Feb 27 21:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added the "--get" option to download files when
+	  Data Twist is given a URL
+	* Please note that automatic unpacking and then
+	  loading the file for processing is still pending
+
+## Release 0.14
+
+Tue Feb 26 18:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Consolidated all the SQL setup stuff into 
+	  "sql_format.sql." This means we got rid of 
+	  "prepare_term_taxonomy.sql" and "setup_pages.sql",
+	  resulting in minus two files (145 lines), with 
+	  "sql_format.sql" getting 40 lines fatter.
+	* This means today's productivity was -105!
+
+## Release 0.13
+
+Mon Feb 25 12:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added progress feedback while reading the input file
+
+## Release 0.12
+
+Sun Feb 24 23:50:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added support for command line options
+	* Added sanity checks for missing input and output files
+	* Added variables for program name, version, copyright
+	* Updated documentation to reflect new usage
+
+## Release 0.11
+
+Sun Feb 24 13:15:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* There appeared to be a bug with the way that the 
+	  sub-categories "shop" and "amenity" were displaying 
+	  (see https://github.com/shanecoughlan/data-twist/issues/10)
+	  Fixed and tested, so looking good now, though we 
+	  might want to dig into this further in the future.
+
+## Release 0.10
+
+Sun Feb 24 12:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* In the 'output' area, at "array.each { |a|",
+	  item 12 and 19, I substituted "#{a[6]}-#{a[3]}"
+	  (the title+ID combination) with "#{a[3]}" (title)
+	  to squash a bug with broken URLs and blank posts
+	  in Wordpress. Looks good.
+
+## Release 0.9
+
+Sat Feb 23 11:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Cleaned up English language feedback to users
+	* Removed the loop when an input filename is not found
+
+## Release 0.8
+
+Fri Feb 22 08:30:55 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Cleaned up English language feedback to users
+	* Changed input/output filenames to generic format
+	* This was just a tidy of 0.7 for public release
+
+## Release 0.7
+
+Wed Feb 20 08:30:55 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Cleaned up English language feedback to users
+	* Removed the loop when an input filename is not found
+
+## Release 0.6
+
+Wed Feb 20 13:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added OSM "type" to Wordpress "category" support
+	  by automatically searching for and extracting
+	  "amenity" and "shop" nodes, and associating them
+	  with Wordpress categories of the same name.
+	  The priority is on "shop" if we find both tags in
+	  one entry.
+	* Added duplication detection to get around import
+	  errors
+	* Please note that both features are quite rough at
+	  the moment, and will need to (a) have the import
+	  parameters expanded and (b) refine their searching
+	  and priorities to ensure depth as well as breadth
+	  of data.
+
+## Release 0.5
+
+Tue Feb 19 17:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Fixed bug with SQL format description that prevented
+	  import. It was related to the table field sizes and 
+	  types.
+	* More specifically:
+	  In table `wp_geo_mashup_locations` changed
+	  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+	  `lat` float(11,7) NOT NULL,
+	  `lng` float(11,7) NOT NULL,
+	  `saved_name` varchar(100) DEFAULT NULL,
+ 	  to:
+	  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+	  `lat` double(11,7) NOT NULL,
+	  `lng` double(11,7) NOT NULL,
+	  `saved_name` varchar(200) DEFAULT NULL,
+	  In table `wp_geo_mashup_locations` changed
+	  `location_id` mediumint(9) NOT NULL,
+	  to: 
+	  `location_id` bigint(20) NOT NULL,
+	* Updated documentation
+
+## Release 0.4
+
+Tue Feb 19 17:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Improved SQL import by using London library and
+	  more general London data obtained from OSM XAPI
+	  downloads
+	* Updated documentation
+
+## Release 0.3
+
+Mon Feb 18 15:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* First release of the simple OSM XML to SQL format
+	  script
+	* Inclusion of geo-awareness by also populating the
+	  Geo Mashup database tables/fields
+	* Updated documentation
+
+## Release 0.2
+
+Sun Feb 17 17:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Test of formatting Cloudmade's basic OSM XML into 
+	  XML that imports direct to MySQL via phpMyAdmin
+	* Please note that this test failed, and we also
+	  discovered that phpMyAdmin would not reimport its
+	  own exported data.
+
+## Release 0.1
+
+Sun Feb 17 17:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Initial release of code to input Cloudmade's basic
+	  OSM XML and output Wordpress RSS import format XML
+	* Added README, usage instructions and licensing

@@ -17,7 +17,7 @@ require 'open-uri'
 
 # set the program name, version and copyright (プログラム名、バージョン、および著作権を設定する)
 $PROGRAM_NAME = 'Data Twist'
-$PROGRAM_VERSION = '0.18'
+$PROGRAM_VERSION = '0.19'
 $PROGRAM_COPYRIGHT = 'Copyright (c) 2013 Kana Fukuma and Shane Coughlan'
 $PROGRAM_COPYRIGHT_JA = '著作権 (c) 2013 福間加菜とコークラン クェーン マーティン'
 $PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
@@ -125,7 +125,7 @@ def input(inputfile)
 					end
 					# this is the progress feedback code (これは進行状況のフィードバック·コードです)
 					(write_data + same_data + 1).times do |processed|
-					print "\rLocations processed so far: #{processed}"
+					print "\rLocations processed so far (場所はこれまでに処理): #{processed}"
 					end
 				end
 
@@ -145,10 +145,14 @@ def input(inputfile)
 			end
 		}
 
-	print "\n\n== Summary ==\n"
-	puts "I found #{same_data} duplicate entries in the input file."
-	puts "I wrote #{write_data} locations to the output file."
-	puts "I processed a total of #{same_data + write_data} locations during my analysis."
+	print "\n\n== Summary / 要約 ==\n"
+	puts "\nI found #{same_data} duplicate entries in the input file."
+	puts "私は#{same_data}は、入力ファイル内に重複したエントリを見つけました。"
+	puts "\nI wrote #{write_data} locations to the output file."
+	puts "私は出力ファイルに#{write_data}場所を書いた。"
+	puts "\nI processed a total of #{same_data + write_data} locations during my analysis."
+	puts "私は、分析中に#{same_data + write_data}場所の合計を処理しました。"
+	puts "\n"
 	return array,term_count
 end
 
