@@ -35,7 +35,7 @@ Usage overview: data-twist.rb [options]
     -v, --version                    Show the version number
 
 Here are some example commands:
-Get a file with 'ruby data-twist.rb -g URL'
+Get and automatically process a file with 'ruby data-twist.rb -g URL'
 Convert data with 'ruby data-twist.rb -l [INPUT FILE] -o [OUTPUT]'
 </pre>
 

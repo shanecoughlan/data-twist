@@ -1,0 +1,270 @@
+## Release 0.19
+
+Wed Mar 6 08:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added more Japanese command line support
+	  (追加されたより多くの日本のコマンドラインのサポート)
+	* Added Japanese to the CHANGELOG
+	  (ChangeLogに日本語追加された)
+
+## Release 0.18
+
+Wed Mar 6 06:40:00 2013  Kana Fukuma  <kana@opendawn.com>
+
+	* Removed old code and improved comments
+	  (除去、古いコードと改善コメント)
+
+## Release 0.17
+
+Tue Mar 5 14:10:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added basic Japanese code comments support
+	  (追加された基本的な日本語のコード·コメントのサポート)
+
+## Release 0.16
+
+Thu Mar 1 11:15:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added basic Japanese command line support
+	  (追加された日本語の基本コマンドラインのサポート)
+
+## Release 0.15
+
+Wed Feb 27 21:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added the "--get" option to download files when
+	  Data Twist is given a URL
+	  (ファイルをダウンロードするには、 "get"のオプションを追加しました
+	  データ·ツイストは、URLが与えられます)
+	  
+	* Please note that automatic unpacking and then
+	  loading the file for processing is still pending
+	  (自動その後、開梱とあることに注意してください
+	  処理のためにファイルを読み込むと、まだ保留中です)
+
+## Release 0.14
+
+Tue Feb 26 18:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Consolidated all the SQL setup stuff into 
+	  "sql_format.sql." This means we got rid of 
+	  "prepare_term_taxonomy.sql" and "setup_pages.sql",
+	  resulting in minus two files (145 lines), with 
+	  "sql_format.sql" getting 40 lines fatter.
+	  (連結は、すべてのSQLセットアップのものに
+	  "sql_format.sql。"これは、我々が処分したことを意味
+	  "prepare_term_taxonomy.sql"と "setup_pages.sql"
+	  と、マイナスの2つのファイル（145行）の結果
+	  "sql_format.sql"は40行太っ取得。)
+	  
+	* This means today's productivity was -105!
+	  (これは今日の生産性は-105だったことを意味します！)
+
+## Release 0.13
+
+Mon Feb 25 12:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added progress feedback while reading the input file
+	  (入力ファイルの読み取り中に進行状況のフィードバックを追加しました)
+
+## Release 0.12
+
+Sun Feb 24 23:50:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added support for command line options
+	  (コマンドラインオプションのサポートを追加)
+	  
+	* Added sanity checks for missing input and output files
+	  (不足している入力ファイルと出力ファイルのための追加された健全性チェック)
+	  
+	* Added variables for program name, version, copyright
+	  (プログラム名、バージョン、著作権のために追加された変数)
+	  
+	* Updated documentation to reflect new usage
+	  (新しい用法を反映するために更新されたドキュメント)
+
+## Release 0.11
+
+Sun Feb 24 13:15:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* There appeared to be a bug with the way that the 
+	  sub-categories "shop" and "amenity" were displaying 
+	  (see https://github.com/shanecoughlan/data-twist/issues/10)
+	  Fixed and tested, so looking good now, though we 
+	  might want to dig into this further in the future.
+	  (そのようにするとバグがあるように登場
+	  サブカテゴリ"ショップ"と "快適性"が表示された
+	 （https://github.com/shanecoughlan/data-twist/issues/10を参照してください）
+	  でも固定されており、テストなので、今では格好良い、我々
+	  将来的にはこれをさらに掘り下げることをお勧めします。)
+
+## Release 0.10
+
+Sun Feb 24 12:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* In the 'output' area, at "array.each { |a|",
+	  item 12 and 19, I substituted "#{a[6]}-#{a[3]}"
+	  (the title+ID combination) with "#{a[3]}" (title)
+	  to squash a bug with broken URLs and blank posts
+	  in Wordpress. Looks good.
+	  "出力"領域では、少なくとも"array.each{| A |"、
+	  項目12と19は、私が" - ＃{[3]}＃{[6]}"置換
+	 （タイトル+ IDの組み合わせ）（タイトル）"{[3]}＃"で
+	  スカッシュ壊れURLと空白のポストとバグ
+	  Wordpressのインチよさそうだ。
+
+## Release 0.9
+
+Sat Feb 23 11:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Cleaned up English language feedback to users
+	  (ユーザーに英語のフィードバックをクリーンアップ)
+	  
+	* Removed the loop when an input filename is not found
+	  (入力ファイル名が見つからないループを除去)
+
+## Release 0.8
+
+Fri Feb 22 08:30:55 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Cleaned up English language feedback to users
+	  (ユーザーに英語のフィードバックをクリーンアップ)
+	
+	* Changed input/output filenames to generic format
+	  (汎用の形式に変更入力/出力ファイル名)
+	
+	* This was just a tidy of 0.7 for public release
+	  (これは、公共のリリースのために0.7のちょうど整頓だった)
+
+## Release 0.7
+
+Wed Feb 20 08:30:55 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Cleaned up English language feedback to users
+	  (ユーザーに英語のフィードバックをクリーンアップ)
+	  
+	* Removed the loop when an input filename is not found
+	  (入力ファイル名が見つからないループを除去)
+
+## Release 0.6
+
+Wed Feb 20 13:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Added OSM "type" to Wordpress "category" support
+	  by automatically searching for and extracting
+	  "amenity" and "shop" nodes, and associating them
+	  with Wordpress categories of the same name.
+	  The priority is on "shop" if we find both tags in
+	  one entry.
+	  (Wordpressの"カテゴリ"をサポートするOSM"タイプ"を追加しました
+	  自動的に検索し、抽出することにより、
+	  "快適性"と "ショップ"ノード、およびそれらを関連付ける
+	  同じ名前のWordpressのカテゴリを持つ。
+	  我々は両方のタグを発見した場合の優先順位は"お店"にあります
+	  1エントリー。)
+	  
+	* Added duplication detection to get around import
+	  errors
+	  (インポートを回避するために追加された重複検出
+	  エラー)
+	  
+	* Please note that both features are quite rough at
+	  the moment, and will need to (a) have the import
+	  parameters expanded and (b) refine their searching
+	  and priorities to ensure depth as well as breadth
+	  of data.
+	  (両方の機能でかなりラフであることに注意してください
+	  一瞬、（）を輸入してもらう必要があります
+	  パラメータが展開され、（b）は、その検索を絞り込む
+	  と優先度は深さだけでなく、幅を確保するため
+	  データの。)
+
+## Release 0.5
+
+Tue Feb 19 17:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Fixed bug with SQL format description that prevented
+	  import. It was related to the table field sizes and 
+	  types.
+	  (防止、SQL形式の説明のバグが修正されました
+	  インポートします。これは、テーブルのフィールドサイズと関連していた
+	  タイプ。)
+	  
+	* More specifically (すなわち):
+	  In table `wp_geo_mashup_locations` changed
+	  (テーブルwp_geo_mashup_locations`で`変更)
+	  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+	  `lat` float(11,7) NOT NULL,
+	  `lng` float(11,7) NOT NULL,
+	  `saved_name` varchar(100) DEFAULT NULL,
+ 	  to:
+	  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+	  `lat` double(11,7) NOT NULL,
+	  `lng` double(11,7) NOT NULL,
+	  `saved_name` varchar(200) DEFAULT NULL,
+	  テーブルwp_geo_mashup_relationships`で`変更
+	  `location_id` mediumint(9) NOT NULL,
+	  to: 
+	  `location_id` bigint(20) NOT NULL,
+	  
+	* Updated documentation
+	  (更新されたドキュメント)
+
+## Release 0.4
+
+Tue Feb 19 17:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Improved SQL import by using London library and
+	  more general London data obtained from OSM XAPI
+	  downloads
+	  (改良されたSQLロンドンライブラリを使用して、インポートおよび
+	  OSM XAPIから得られた、より一般的なロンドンのデータ
+	  ダウンロード)
+	  
+	* Updated documentation
+	  (更新されたドキュメント)
+
+## Release 0.3
+
+Mon Feb 18 15:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* First release of the simple OSM XML to SQL format
+	  script
+	  (SQL形式への単純なOSM XMLの最初のリリース
+	  スクリプト)
+	  
+	* Inclusion of geo-awareness by also populating the
+	  Geo Mashup database tables/fields
+	  (また、居住することによって、地理的意識のインクルージョン
+	  ジオマッシュアップ·データベース·テーブル/フィールド)
+	  
+	* Updated documentation
+	  (更新されたドキュメント)
+
+## Release 0.2
+
+Sun Feb 17 17:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Test of formatting Cloudmade's basic OSM XML into 
+	  XML that imports direct to MySQL via phpMyAdmin
+	  (書式Cloudmadeの基本的なOSM XMLのESTに
+	  phpMyAdminを経由してMySQLに直接インポートするXML)
+	  
+	* Please note that this test failed, and we also
+	  discovered that phpMyAdmin would not reimport its
+	  own exported data.
+	  (このテストが失敗したことに注意してください、そして我々も
+	  phpMyAdminは再インポートしないことを発見し、その
+	  独自のデータをエクスポートした。)
+
+## Release 0.1
+
+Sun Feb 17 17:00:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Initial release of code to input Cloudmade's basic
+	  OSM XML and output Wordpress RSS import format XML
+	  (入力Cloudmadeの基本的にコードの最初のリリース
+	  OSM XMLおよび出力WordpressのRSSフィードのインポート形式のXML)
+	  
+	* Added README, usage instructions and licensing
+	  (追加されたREADMEファイル、使用方法およびライセンシング)

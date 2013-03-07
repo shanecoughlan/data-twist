@@ -17,7 +17,7 @@ require 'open-uri'
 
 # set the program name, version and copyright (プログラム名、バージョン、および著作権を設定する)
 $PROGRAM_NAME = 'Data Twist'
-$PROGRAM_VERSION = '0.19'
+$PROGRAM_VERSION = '0.20'
 $PROGRAM_COPYRIGHT = 'Copyright (c) 2013 Kana Fukuma and Shane Coughlan'
 $PROGRAM_COPYRIGHT_JA = '著作権 (c) 2013 福間加菜とコークラン クェーン マーティン'
 $PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
@@ -50,7 +50,8 @@ def input(inputfile)
 		file = File.read(filename)
 	end
 	
-	print "\n------------\n\n"
+	# output to explain data twisting has started (データのねじれを説明するために出力を開始しました)
+	print "\n== Starting to twist data / データをねじら開始 ==\n\n"
 	
 #	begin
 		# read a line from the file
@@ -258,32 +259,38 @@ QA = OptionParser.new do |opts|
 	opts.banner = "\nUsage overview (使用方法の概要): data-twist.rb [options]"
 	
   # gets a file
-  	options[:load_file] = "" # code to load a file based on command line input (ファイルをロードするためのコードでは、コマンドラインの入力に基づいて、)
-		opts.on( '-g', '--get FILE', 'Get file (ファイルを取得)' ) do|urls|
-		# code below is from here (以下のコードは、ここからです):
-		# http://www.ruby-forum.com/topic/92121#183390
+  	options[:get_file] = "" # code to get a file based on command line input (ファイルをロードするためのコードでは、コマンドラインの入力に基づいて、)
+		opts.on( '-g', '--get FILE', 'Get file (ファイルを取得)' ) do|get_file|
 
+		# sets a buffer size (バッファサイズを設定します)
 		BUFFER_SIZE = 8 * 1_024
 
-		urls.each do |url|
-		  puts "Downloading from #{url}"
-		  output_file = url.split(/\//).last
-		  puts "Creating a new file called #{output_file}"
+		# gets the file and names it according to the end of the URL (ファイルを取得し、URLの末尾に応じてそれに名前を付け)
+		puts "\nDownloading from (からのダウンロード) #{get_file}"
+		downloaded_file = get_file.split(/\//).last
+		# output to the user to confirm this (ユーザへの出力このことを確認するための)
+		puts "Creating (作成): #{downloaded_file}"
 
-		  open(url, "r",
-		       :content_length_proc => lambda {|content_length| puts "This file is #{content_length} bytes long." },
-		       :progress_proc => lambda { |size| printf("I am downloading it now: %010d bytes\r", size.to_i) }) do |input|
-		    open(output_file, "wb") do |output|
-		      while (buffer = input.read(BUFFER_SIZE))
-		        output.write(buffer)
-		      end
+		# checks remote file size and shows download progress (リモート·ファイル·サイズをチェックして、ダウンロードの進行状況を示しています)
+		open(get_file, "r",
+		     :content_length_proc => lambda {|content_length| puts "\nSize in bytes (バイト単位のサイズ): #{content_length}" },
+		     :progress_proc => lambda { |size| printf("Downloaded (ダウンロード): %010d bytes\r", size.to_i) }) do |input|
+		  # writes the downloaded file (ダウンロードしたファイルを書き込む)
+		  open(downloaded_file, "wb") do |output|
+		    while (buffer = input.read(BUFFER_SIZE))
+		      output.write(buffer)
 		    end
 		  end
-		  puts "\nOK, the download is complete."
+		  # prepares to name the decompressed file based on the downloaded file (ダウンロードしたファイルに基づいて、解凍したファイルに名前を付けるための準備)
+		  decompressed_file = downloaded_file.split(".").first(2).join(".")
+		  # decompresses the downloaded file (ダウンロードしたファイルを解凍)
+		  system *%W(bzip2 -d #{downloaded_file})
+		  # making sure to carry the decompressed file name to the end of the script (スクリプトの最後に解凍されたファイル名を運ぶことを確認すること)
+		  options[:get_file] = decompressed_file
 		end
-		puts "Please unzip the downloaded file before loading it into Data Twist."
-		puts "You can get help by typing 'ruby data-twist.rb -h'"
-		exit
+		# end message for the get and decompress section (取得し、セクションを解凍するための終了メッセージ)
+		puts "\n\nThe download is complete."
+		puts "ダウンロードが完了しました。"
 	end
     
   # takes the input file name (入力ファイル名を受け取り、)
@@ -326,11 +333,17 @@ end.parse!
 
   # check to deal with a missing input file name (不足している入力ファイル名に対処するためにチェック)
 	if options[:load_file].empty?
-		then
-		puts "\nI cannot see the input file. Please try again."
-		puts "\nYou can get help by typing 'ruby data-twist.rb -h'"
-		puts "\n"
-		exit
+		# checking to see if a file was downloaded
+		then options[:load_file] = "#{options[:get_file]}"
+			# if not the string is still empty and Data Twist exists with an error
+			if options[:load_file].empty?
+				puts "\nI cannot see the input file. Please try again."
+				puts "\nYou can get help by typing 'ruby data-twist.rb -h'"
+				puts "\n"
+				exit
+				# if the string had a value Data Twist continues
+				else
+			end
 	end
 		
   # check to insert a default output file name if needed (必要に応じて、デフォルトの出力ファイル名を挿入するにチェック)
