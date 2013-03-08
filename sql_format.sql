@@ -1,11 +1,7 @@
--- phpMyAdmin SQL Dump
--- version 3.4.11.1
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Feb 18, 2013 at 01:35 AM
--- Server version: 5.1.66
--- PHP Version: 5.2.17
+-- This is the Data Twist SQL format file.
+-- これは、データツイストSQL形式のファイルです。
+-- It is used by Data Twist to create the output file.
+-- これは、出力ファイルを作成するためにデータツイストによって使用されます。
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -15,10 +11,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-
---
--- Database: `phjrsz_wp7`
---
 
 -- --------------------------------------------------------
 

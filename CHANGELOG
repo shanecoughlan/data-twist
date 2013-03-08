@@ -1,3 +1,16 @@
+## Release 0.21
+
+Thu Mar 8 20:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+
+	* Cleaned up the SQL_FORMAT.SQL file
+	  (SQL_FORMAT.SQLファイルをクリーンアップ)
+
+	* Fixed a bug with the encoding of SQL_FORMAT.SQL
+	  (SQL_FORMAT.SQLのエンコードの不具合を修正)
+
+	* Fixed a bug with uppercase in the require list
+	  (要請したリストで、大文字のバグを修正)
+
 ## Release 0.20
 
 Thu Mar 7 15:20:00 2013  Shane Coughlan  <shane@opendawn.com>

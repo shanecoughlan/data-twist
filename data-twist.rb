@@ -11,13 +11,13 @@
 # required Ruby componants (必要なRubyのcomponants)
 require 'uri'
 require 'kconv'
-require 'Date'
+require 'date'
 require 'optparse'
 require 'open-uri'
 
 # set the program name, version and copyright (プログラム名、バージョン、および著作権を設定する)
 $PROGRAM_NAME = 'Data Twist'
-$PROGRAM_VERSION = '0.20'
+$PROGRAM_VERSION = '0.21'
 $PROGRAM_COPYRIGHT = 'Copyright (c) 2013 Kana Fukuma and Shane Coughlan'
 $PROGRAM_COPYRIGHT_JA = '著作権 (c) 2013 福間加菜とコークラン クェーン マーティン'
 $PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
