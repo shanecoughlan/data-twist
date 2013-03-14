@@ -1,13 +1,23 @@
+## Release 0.24
+
+Thu Mar 14 15:00:00 2013  Kana Fukuma  <kana@opendawn.com>
+
+	* Improved Japanese comments in the script
+	  (スクリプトで改善された日本語のコメント)
+
+	* Fixed a bug with displaying UNCATEGORIZED posts
+	  (未分類の記事を表示する際のバグを修正)
+
 ## Release 0.23
 
-Tue Mar 13 17:30:00 2013  Shane Coughlan  <shane@opendawn.com>
+Wed Mar 13 17:30:00 2013  Shane Coughlan  <shane@opendawn.com>
 
 	* Improved documentation
 	  (ドキュメントの改良)
 
 ## Release 0.22
 
-Tue Mar 13 15:15:00 2013  Shane Coughlan  <shane@opendawn.com>
+Wed Mar 13 15:15:00 2013  Shane Coughlan  <shane@opendawn.com>
 
 	* Fixed a bug with displaying UNCATEGORIZED posts
 	  (未分類の記事を表示する際のバグを修正)
