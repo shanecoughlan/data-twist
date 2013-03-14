@@ -17,7 +17,7 @@ require 'open-uri'
 
 # set the program name, version and copyright (プログラム名、バージョン、および著作権を設定する)
 $PROGRAM_NAME = 'Data Twist'
-$PROGRAM_VERSION = '0.24'
+$PROGRAM_VERSION = '0.25'
 $PROGRAM_COPYRIGHT = 'Copyright (c) 2013 Kana Fukuma and Shane Coughlan'
 $PROGRAM_COPYRIGHT_JA = '著作権 (c) 2013 福間加菜とコークラン クェーン マーティン'
 $PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
@@ -114,7 +114,7 @@ def input(inputfile)
 						term = 4
 						term_count[1] = term_count[1]+1
 					else # uncategorized
-						term = 5
+						term = 1
 						term_count[2] = term_count[2]+1
 					end
 					# this is the checking code to find duplicate latitude and longitude (重複する緯度・経度を見つけるためのチェックコード)
@@ -238,7 +238,7 @@ def output(last_str,outputfile,array,term_count)
 		# write about the wp_term_taxonomy (wp_term_taxonomyについて書きます)
 		f.write "--\n-- Dumping data for table `wp_term_taxonomy`\n--\n\n"
 		f.write "INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES\n"
-		f.write "(5,1,'category','uncategorized',0,#{term_count[2]}),\n"
+		f.write "(1,1,'category','uncategorized',0,#{term_count[2]}),\n"
 		f.write "(3,3,'category','shop',0,#{term_count[0]}),\n"
 		f.write "(4,4,'category','amenity',0,#{term_count[1]});\n\n"
 
