@@ -1,3 +1,13 @@
+## Release 1.0
+
+Fri Mar 15 15:00:00 2013  Kana Fukuma  <kana@opendawn.com>
+
+	* Finalized the category counting code
+	  (カテゴリカウントのコードを完成させ)
+
+	* Improved the code comments
+	  (コードのコメントを改良)
+
 ## Release 0.25
 
 Thu Mar 14 17:00:00 2013  Shane Coughlan  <shane@opendawn.com>

@@ -17,7 +17,7 @@ require 'open-uri'
 
 # set the program name, version and copyright (プログラム名、バージョン、および著作権を設定する)
 $PROGRAM_NAME = 'Data Twist'
-$PROGRAM_VERSION = '0.25'
+$PROGRAM_VERSION = '1.0'
 $PROGRAM_COPYRIGHT = 'Copyright (c) 2013 Kana Fukuma and Shane Coughlan'
 $PROGRAM_COPYRIGHT_JA = '著作権 (c) 2013 福間加菜とコークラン クェーン マーティン'
 $PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
@@ -105,22 +105,29 @@ def input(inputfile)
 					timestamp.gsub!("T", " ")
 					timestamp.gsub!("Z", " ")
 					
+					# this classifies the posts according to category
 					if shop != "" # shop
 						desc = shop
 						term = 3
-						term_count[0] = term_count[0]+1
 					elsif amenity != "" # amenity
 						desc = amenity
 						term = 4
-						term_count[1] = term_count[1]+1
 					else # uncategorized
 						term = 1
-						term_count[2] = term_count[2]+1
 					end
 					# this is the checking code to find duplicate latitude and longitude (重複する緯度・経度を見つけるためのチェックコード)
 					if (a = array.select{ |a| a[4] == lat && a[5] == lon}) == []
 						array << [type,name,desc,id,lat,lon,e_name,timestamp,term]
 						write_data = write_data + 1
+						
+						# this counts the categories according to their terms
+						if term == 1
+							term_count[2] = term_count[2] + 1
+						elsif term == 3
+							term_count[0] = term_count[0] + 1
+						elsif term == 4
+							term_count[1] = term_count[1] + 1
+						end
 					else
 						#puts "duplication data:#{id},#{name},#{lat},#{lon}"
 						same_data = same_data + 1
@@ -147,12 +154,19 @@ def input(inputfile)
 		}
 
 	print "\n\n== Summary / 要約 ==\n"
-	puts "\nI found #{same_data} duplicate entries in the input file."
-	puts "入力ファイル内に#{same_data}個の重複したエントリを見つけました。"
-	puts "\nI wrote #{write_data} locations to the output file."
-	puts "出力ファイルに#{write_data}か所の情報を書きました。"
+	# this explains how many locations were found
 	puts "\nI processed a total of #{same_data + write_data} locations during my analysis."
 	puts "分析中に合計#{same_data + write_data}個のエントリを処理しました。"
+	# this explains how many locations were duplicates
+	puts "\nI found #{same_data} duplicate entries in the input file."
+	puts "入力ファイル内に#{same_data}個の重複したエントリを見つけました。"
+	# this explains how many locations were written to the output file
+	puts "\nI wrote #{write_data} locations to the output file:"
+	puts "出力ファイルに#{write_data}か所の情報を書きました："
+	# this explains what type of locations were found
+	puts "#{term_count[0]} 'Shops'"
+	puts "#{term_count[1]} 'Amenities'"
+	puts "#{term_count[2]} 'Uncategorized'"
 	puts "\n"
 	return array,term_count
 end
