@@ -1,12 +1,11 @@
-## Release 1.0
+## Release 0.26
 
-Fri Mar 15 15:00:00 2013  Kana Fukuma  <kana@opendawn.com>
+Thu Jul 17 11:00:00 2014  Shane Coughlan  <shane@opendawn.com>
 
-	* Finalized the category counting code
-	  (カテゴリカウントのコードを完成させ)
-
-	* Improved the code comments
-	  (コードのコメントを改良)
+	* Began moving to Object Orientated model
+	  (指向のオブジェクトモデルへの移行開始しました)
+	* Fixed a bug with “missing input file name” language
+	  ([不足している入力ファイル名]言語のバグを修正しました)
 
 ## Release 0.25
 

@@ -3,7 +3,7 @@ Data Twist
 
 An experimental script family to twist Open Data into new shapes.
 
-Copyright (c) 2013 Kana Fukuma and Shane Coughlan
+Copyright (c) 2013, 2014 Kana Fukuma and Shane Coughlan
 
 Overview
 --------
