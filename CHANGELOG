@@ -1,3 +1,10 @@
+## Release 0.27
+
+Thu Jul 17 16:30:00 2014  Shane Coughlan  <shane@opendawn.com>
+
+	* Moved to global list of “require” commands
+	* 「require」のコマンドのグローバルなリストに移動
+
 ## Release 0.26
 
 Thu Jul 17 11:00:00 2014  Shane Coughlan  <shane@opendawn.com>

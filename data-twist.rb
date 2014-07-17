@@ -15,24 +15,26 @@ require 'date'
 require 'optparse'
 require 'open-uri'
 
+# required Data Twist componants (必要なData Twistのcomponants)
+require "./inputformat"	#call inputformat.rb (呼び出すinputformat.rb)
+require "./templatesql"	#call templatesql.rb (呼び出すtemplatesql.rb)
+require "./outputformat"#call outputformat.rb (呼び出すoutputformat.rb)
+
 # set the program name, version and copyright (プログラム名、バージョン、および著作権を設定する)
 $PROGRAM_NAME = 'Data Twist'
-$PROGRAM_VERSION = '0.26'
+$PROGRAM_VERSION = '0.27'
 $PROGRAM_COPYRIGHT = 'Copyright (c) 2013, 2014 Kana Fukuma and Shane Coughlan'
 $PROGRAM_COPYRIGHT_JA = '著作権 (c) 2013, 2014 福間加菜とコークラン クェーン マーティン'
 $PROGRAM_LICENSE = 'This application is licensed under Ruby + BSDL. See README.md for details.'
 $PROGRAM_LICENSE_JA = 'このアプリケーションはルビー+ BSDL下でライセンスされています. 詳細についてはREADME.mdを参照してください。'
 
 # get the input format information (入力フォーマット情報を取得する)
-require "./inputformat"	#call inputformat.rb (呼び出すinputformat.rb)
 include InputFormat 	#run inputformat.rb (始めるinputformat.rb)
 
 # set the SQL template (SQLテンプレートを設定する)
-require "./templatesql"	#call templatesql.rb (呼び出すtemplatesql.rb)
 include TemplateSQL 	#run templatesql.rb (始めるtemplatesql.rb)
 
 # get the output format information (出力フォーマット情報を取得する)
-require "./outputformat"#call outputformat.rb (呼び出すoutputformat.rb)
 include OutputFormat 	#run outputformat.rb (始めるoutputformat.rb)
 
 # check the command line for options (オプションについては、コマンドラインを確認)
