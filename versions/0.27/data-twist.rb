@@ -15,7 +15,7 @@ require 'date'
 require 'optparse'
 require 'open-uri'
 
-# required Data Twistcomponants (必要なRubyのcomponants)
+# required Data Twist componants (必要なData Twistのcomponants)
 require "./inputformat"	#call inputformat.rb (呼び出すinputformat.rb)
 require "./templatesql"	#call templatesql.rb (呼び出すtemplatesql.rb)
 require "./outputformat"#call outputformat.rb (呼び出すoutputformat.rb)
